@@ -4,13 +4,13 @@
   <a href="https://www.npmjs.com/package/@handsin/money">
     <img src="https://img.shields.io/npm/v/@handsin/money.svg" alt="NPM version">
   </a>
-  <a href="https://github.com/hands-in/money-node/actions/workflows/build.yml">
-    <img src="https://github.com/hands-in/money-node/actions/workflows/build.yml/badge.svg" alt="Build status">
+  <a href="https://github.com/hands-in/money/actions/workflows/build.yml">
+    <img src="https://github.com/hands-in/money/actions/workflows/build.yml/badge.svg" alt="Build status">
   </a>
-  <a href="https://hands-in.github.io/money-node/coverage">
+  <a href="https://hands-in.github.io/money/coverage">
     <img src="https://hands-in.github.io/money-node/coverage/badges.svg"  alt="Test Coverage">
   </a>
-   <a href="https://hands-in.github.io/money-node/docs">
+   <a href="https://hands-in.github.io/money/docs">
      <img src="https://img.shields.io/badge/-Documentation-green" alt="Documentation">
    </a>
    <a href="https://opensource.org/licenses/MIT">
