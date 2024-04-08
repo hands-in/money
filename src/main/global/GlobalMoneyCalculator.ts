@@ -9,7 +9,7 @@ export default class GlobalMoneyCalculator implements MoneyCalculator<Money> {
 
   private readonly fx: ExchangeRates;
 
-  private readonly localMoneyCalculator: LocalMoneyCalculator;
+  private localMoneyCalculator: LocalMoneyCalculator;
 
   constructor(money: Money, fx: ExchangeRates) {
     this.money = money;
@@ -22,7 +22,7 @@ export default class GlobalMoneyCalculator implements MoneyCalculator<Money> {
       this.money.currency
     );
 
-    this.money = this.localMoneyCalculator.add(convertedMoney).calculate();
+    this.localMoneyCalculator = this.localMoneyCalculator.add(convertedMoney);
 
     return this;
   }
@@ -32,24 +32,28 @@ export default class GlobalMoneyCalculator implements MoneyCalculator<Money> {
       this.money.currency
     );
 
-    this.money = this.localMoneyCalculator.subtract(convertedMoney).calculate();
+    this.localMoneyCalculator =
+      this.localMoneyCalculator.subtract(convertedMoney);
 
     return this;
   }
 
   divide(float: number): GlobalMoneyCalculator {
-    this.money = this.localMoneyCalculator.divide(float).calculate();
+    this.localMoneyCalculator = this.localMoneyCalculator.divide(float);
 
     return this;
   }
 
   multiply(float: number): GlobalMoneyCalculator {
-    this.money = this.localMoneyCalculator.multiply(float).calculate();
+    this.localMoneyCalculator = this.localMoneyCalculator.multiply(float);
 
     return this;
   }
 
-  calculate(): GlobalMoney {
-    return new GlobalMoney(this.money, this.fx);
+  calculate(precision = 0): GlobalMoney {
+    return new GlobalMoney(
+      this.localMoneyCalculator.calculate(precision),
+      this.fx
+    );
   }
 }

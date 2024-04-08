@@ -1,3 +1,4 @@
+import Big from 'big.js';
 import {Currency} from './@types/Currency';
 import {Money} from './@types/Money';
 import CurrencyUtils from './currency/CurrencyUtils';
@@ -40,9 +41,9 @@ export default class MoneyUtils {
     const decimalPoints = CurrencyUtils.getCurrencyDecimalPlaces(
       money.currency
     );
-    const minorUnit = 10 ** decimalPoints;
+    const minorUnit = new Big(10).pow(decimalPoints);
 
-    return (money.amount / minorUnit).toFixed(decimalPoints);
+    return new Big(money.amount).div(minorUnit).toFixed(decimalPoints);
   }
 
   static convertFloatToMoney(
@@ -50,11 +51,11 @@ export default class MoneyUtils {
     currency: Currency
   ): Money {
     const decimalPoints = CurrencyUtils.getCurrencyDecimalPlaces(currency);
-    const minorUnit = 10 ** decimalPoints;
+    const minorUnit = new Big(10).pow(decimalPoints);
     const floatString = (
       typeof float === 'number' ? float : Number(float)
     ).toFixed(decimalPoints);
 
-    return {amount: Number(floatString) * minorUnit, currency};
+    return {amount: new Big(floatString).mul(minorUnit).toNumber(), currency};
   }
 }

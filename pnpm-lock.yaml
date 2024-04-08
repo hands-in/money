@@ -8,6 +8,9 @@ dependencies:
   big.js:
     specifier: ^6.2.1
     version: 6.2.1
+  bigjs:
+    specifier: ^0.0.3
+    version: 0.0.3
 
 devDependencies:
   '@commitlint/cli':
@@ -1953,6 +1956,10 @@ packages:
 
   /big.js@6.2.1:
     resolution: {integrity: sha512-bCtHMwL9LeDIozFn+oNhhFoq+yQ3BNdnsLSASUxLciOb1vgvpHsIO1dsENiGMgbb4SkP5TrzWzRiLddn8ahVOQ==}
+    dev: false
+
+  /bigjs@0.0.3:
+    resolution: {integrity: sha512-rfsUsla+TYUpqVeJT7emkow3Cpn/cXmA7xGGvS9D0JzipoBMKCgpKfdSonTiK7KChdsx7os1AIJ6nu3FyT8jEg==}
     dev: false
 
   /bl@4.1.0:

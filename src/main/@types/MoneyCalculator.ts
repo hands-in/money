@@ -5,5 +5,5 @@ export default interface MoneyCalculator<T extends Money> {
   multiply(float: number): MoneyCalculator<T>;
   add(data: T): MoneyCalculator<T>;
   subtract(data: T): MoneyCalculator<T>;
-  calculate(): T;
+  calculate(precision?: number): T;
 }

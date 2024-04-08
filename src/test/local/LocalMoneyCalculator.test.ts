@@ -8,7 +8,7 @@ describe('Local Money Calculator', () => {
     const THREE_HUNDRED_GBP = {amount: 300, currency: Currency.GBP};
 
     expect(
-      new LocalMoneyCalculator(ONE_HUNDRED_GBP).add(TWO_HUNDRED_GBP)
+      new LocalMoneyCalculator(ONE_HUNDRED_GBP).add(TWO_HUNDRED_GBP).calculate()
     ).toEqual(THREE_HUNDRED_GBP);
   });
 });

@@ -4,13 +4,13 @@ import {Money} from '../@types/Money';
 import MoneyCalculator from '../@types/MoneyCalculator';
 
 export default class LocalMoneyCalculator implements MoneyCalculator<Money> {
-  private amount: number;
-
   private currency: Currency;
 
+  private result: Big;
+
   constructor(money: Money) {
-    this.amount = money.amount;
     this.currency = money.currency;
+    this.result = new Big(money.amount);
   }
 
   divide(float: number): LocalMoneyCalculator {
@@ -19,17 +19,13 @@ export default class LocalMoneyCalculator implements MoneyCalculator<Money> {
       return this;
     }
 
-    const bigResult = new Big(this.amount).div(new Big(float));
-
-    this.amount = Math.ceil(bigResult.toNumber());
+    this.result = this.result.div(new Big(float));
 
     return this;
   }
 
   multiply(float: number): LocalMoneyCalculator {
-    const bigResult = new Big(this.amount).mul(new Big(float));
-
-    this.amount = Math.ceil(bigResult.toNumber());
+    this.result = this.result.mul(new Big(float));
 
     return this;
   }
@@ -37,9 +33,7 @@ export default class LocalMoneyCalculator implements MoneyCalculator<Money> {
   add(money: Money): LocalMoneyCalculator {
     this.checkCurrencyMatches(money);
 
-    const bigResult = new Big(this.amount).add(new Big(money.amount));
-
-    this.amount = Math.ceil(bigResult.toNumber());
+    this.result = this.result.add(new Big(money.amount));
 
     return this;
   }
@@ -47,15 +41,16 @@ export default class LocalMoneyCalculator implements MoneyCalculator<Money> {
   subtract(money: Money): LocalMoneyCalculator {
     this.checkCurrencyMatches(money);
 
-    const bigResult = new Big(this.amount).sub(new Big(money.amount));
-
-    this.amount = Math.ceil(bigResult.toNumber());
+    this.result = this.result.sub(new Big(money.amount));
 
     return this;
   }
 
-  calculate(): Money {
-    return {amount: this.amount, currency: this.currency};
+  calculate(precision = 0): Money {
+    return {
+      amount: Number(this.result.toFixed(precision, Big.roundUp)),
+      currency: this.currency,
+    };
   }
 
   /* HELPER FUNCTION */
