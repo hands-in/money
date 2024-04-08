@@ -8,7 +8,10 @@
     <img src="https://github.com/hands-in/money/actions/workflows/build.yml/badge.svg" alt="Build status">
   </a>
   <a href="https://hands-in.github.io/money/coverage">
-    <img src="https://hands-in.github.io/money-node/coverage/badges.svg"  alt="Test Coverage">
+    <!-- You can use the below badge when using public repos -->
+    <img src="https://hands-in.github.io/money/coverage/badges.svg" alt="Test Coverage">
+    <!-- You can use the below badge when using private repos -->
+    <!-- <img src="https://img.shields.io/badge/Coverage_report-lightgrey" alt="Test Coverage"> -->
   </a>
    <a href="https://hands-in.github.io/money/docs">
      <img src="https://img.shields.io/badge/-Documentation-green" alt="Documentation">
