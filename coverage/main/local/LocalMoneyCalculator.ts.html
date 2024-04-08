@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.13% </span>
+                <span class="strong">47.36% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/23</span>
+                <span class='fraction'>9/19</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">42.85% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/7</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">39.13% </span>
+                <span class="strong">47.36% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/23</span>
+                <span class='fraction'>9/19</span>
             </div>
         
             
@@ -127,12 +127,7 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a>
-<a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
+<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -157,11 +152,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -175,21 +166,20 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -207,13 +197,13 @@ import {Money} from '../@types/Money';
 import MoneyCalculator from '../@types/MoneyCalculator';
 &nbsp;
 export default class LocalMoneyCalculator implements MoneyCalculator&lt;Money&gt; {
-  private amount: number;
-&nbsp;
   private currency: Currency;
 &nbsp;
+  private result: Big;
+&nbsp;
   constructor(money: Money) {
-    this.amount = money.amount;
     this.currency = money.currency;
+    this.result = new Big(money.amount);
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  divide(</span>float: number): LocalMoneyCalculator {
@@ -222,17 +212,13 @@ export default class LocalMoneyCalculator implements MoneyCalculator&lt;Money&gt
 <span class="cstat-no" title="statement not covered" >      return this;</span>
     }
 &nbsp;
-    const bigResult = <span class="cstat-no" title="statement not covered" >new Big(this.amount).div(new Big(float));</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    this.amount = Math.ceil(bigResult.toNumber());</span>
+<span class="cstat-no" title="statement not covered" >    this.result = this.result.div(new Big(float));</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return this;</span>
   }
 &nbsp;
 <span class="fstat-no" title="function not covered" >  multiply(</span>float: number): LocalMoneyCalculator {
-    const bigResult = <span class="cstat-no" title="statement not covered" >new Big(this.amount).mul(new Big(float));</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    this.amount = Math.ceil(bigResult.toNumber());</span>
+<span class="cstat-no" title="statement not covered" >    this.result = this.result.mul(new Big(float));</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return this;</span>
   }
@@ -240,9 +226,7 @@ export default class LocalMoneyCalculator implements MoneyCalculator&lt;Money&gt
   add(money: Money): LocalMoneyCalculator {
     this.checkCurrencyMatches(money);
 &nbsp;
-    const bigResult = new Big(this.amount).add(new Big(money.amount));
-&nbsp;
-    this.amount = Math.ceil(bigResult.toNumber());
+    this.result = this.result.add(new Big(money.amount));
 &nbsp;
     return this;
   }
@@ -250,15 +234,16 @@ export default class LocalMoneyCalculator implements MoneyCalculator&lt;Money&gt
 <span class="fstat-no" title="function not covered" >  subtract(</span>money: Money): LocalMoneyCalculator {
 <span class="cstat-no" title="statement not covered" >    this.checkCurrencyMatches(money);</span>
 &nbsp;
-    const bigResult = <span class="cstat-no" title="statement not covered" >new Big(this.amount).sub(new Big(money.amount));</span>
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    this.amount = Math.ceil(bigResult.toNumber());</span>
+<span class="cstat-no" title="statement not covered" >    this.result = this.result.sub(new Big(money.amount));</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return this;</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  calculate(</span>): Money {
-<span class="cstat-no" title="statement not covered" >    return {amount: this.amount, currency: this.currency};</span>
+  calculate(precision = 0): Money {
+    return {
+      amount: Number(this.result.toFixed(precision, Big.roundUp)),
+      currency: this.currency,
+    };
   }
 &nbsp;
   /* HELPER FUNCTION */
@@ -277,7 +262,7 @@ export default class LocalMoneyCalculator implements MoneyCalculator&lt;Money&gt
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-05T22:23:11.060Z
+                at 2024-04-08T12:53:54.427Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

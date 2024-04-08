@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.94% </span>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/17</span>
+                <span class='fraction'>14/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">50% </span>
+                <span class="strong">75% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/4</span>
+                <span class='fraction'>3/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.57% </span>
+                <span class="strong">42.85% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>2/7</span>
+                <span class='fraction'>3/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">52.94% </span>
+                <span class="strong">77.77% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/17</span>
+                <span class='fraction'>14/18</span>
             </div>
         
             
@@ -123,16 +123,18 @@
 <a name='L58'></a><a href='#L58'>58</a>
 <a name='L59'></a><a href='#L59'>59</a>
 <a name='L60'></a><a href='#L60'>60</a>
-<a name='L61'></a><a href='#L61'>61</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -174,16 +176,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {Currency} from './@types/Currency';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import Big from 'big.js';
+import {Currency} from './@types/Currency';
 import {Money} from './@types/Money';
 import CurrencyUtils from './currency/CurrencyUtils';
 &nbsp;
@@ -225,22 +228,22 @@ export default class MoneyUtils {
     const decimalPoints = CurrencyUtils.getCurrencyDecimalPlaces(
       money.currency
     );
-    const minorUnit = 10 ** decimalPoints;
+    const minorUnit = new Big(10).pow(decimalPoints);
 &nbsp;
-    return (money.amount / minorUnit).toFixed(decimalPoints);
+    return new Big(money.amount).div(minorUnit).toFixed(decimalPoints);
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  static </span>convertFloatToMoney(
+  static convertFloatToMoney(
     float: string | number,
     currency: Currency
   ): Money {
-    const decimalPoints = <span class="cstat-no" title="statement not covered" >CurrencyUtils.getCurrencyDecimalPlaces(currency);</span>
-    const minorUnit = <span class="cstat-no" title="statement not covered" >10 ** decimalPoints;</span>
-    const floatString = <span class="cstat-no" title="statement not covered" >(</span>
-      typeof float === 'number' ? float : Number(float)
+    const decimalPoints = CurrencyUtils.getCurrencyDecimalPlaces(currency);
+    const minorUnit = new Big(10).pow(decimalPoints);
+    const floatString = (
+      typeof float === 'number' ? <span class="branch-0 cbranch-no" title="branch not covered" >float </span>: Number(float)
     ).toFixed(decimalPoints);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return {amount: Number(floatString) * minorUnit, currency};</span>
+    return {amount: new Big(floatString).mul(minorUnit).toNumber(), currency};
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -250,7 +253,7 @@ export default class MoneyUtils {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2023-07-05T22:23:11.060Z
+                at 2024-04-08T12:53:54.427Z
             </div>
         <script src="../prettify.js"></script>
         <script>
