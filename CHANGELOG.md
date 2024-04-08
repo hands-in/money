@@ -1,3 +1,21 @@
+## [2.0.0](https://github.com/hands-in/money/compare/v1.2.2...v2.0.0) (2024-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **floating point issues:** changed the money calculator api
+
+### Features
+
+* updated repo url ([cbdf6ad](https://github.com/hands-in/money/commit/cbdf6adb068db2dfead8861efb585db96e85ed8a))
+
+
+### Bug Fixes
+
+* **floating point issues:** fixed floating point conversion issues ([ea9200b](https://github.com/hands-in/money/commit/ea9200b54bcd879f3d0309fcd766e0bde4dce7d3))
+* **github workflow:** fixed workflow ([b04463a](https://github.com/hands-in/money/commit/b04463aaddd70c0ad648af07c3f9485c6c29a211))
+* removed preinstall ([6ecdcb8](https://github.com/hands-in/money/commit/6ecdcb8e05a72a9c3a104d411b9be066af0e55c7))
+
 ## [1.2.2](https://github.com/hands-in/money-node/compare/v1.2.1...v1.2.2) (2023-07-05)
 
 
