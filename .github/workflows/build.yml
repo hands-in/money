@@ -70,7 +70,7 @@ jobs:
 
       - name: Create Coverage Badges
         if: (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/dev') && github.repository != 'hands-in/library-template-typescript'
-        uses: jaywcjlove/coverage-badges-cli@e07f25709cd25486855c1ba1b26da53576ff3620
+        uses: jaywcjlove/coverage-badges-cli@daf59ef2ce43c8e4974150356d7250b4c41b4f93
         with:
           source: coverage/coverage-summary.json
           output: coverage/lcov-report/badges.svg
