@@ -23,7 +23,7 @@ jobs:
       - name: Read coverage text report
         uses: fingerprintjs/action-coverage-report-md@v1
         id: coverage-md
-      - uses: marocchino/sticky-pull-request-comment@adca94abcaf73c10466a71cc83ae561fd66d1a56
+      - uses: marocchino/sticky-pull-request-comment@44e0bad81007ecff41ba26d1cbf49a0267d28e9d
         with:
           message: |
             ${{ steps.coverage.outputs.report }}
