@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/hands-in/money/compare/v2.0.0...v2.0.1) (2024-07-30)
+
+
+### Bug Fixes
+
+* updated money type to int64 ([e1a86c9](https://github.com/hands-in/money/commit/e1a86c9d6efa85cc40e20355814ecfea551f2487))
+
 ## [2.0.0](https://github.com/hands-in/money/compare/v1.2.2...v2.0.0) (2024-04-08)
 
 
