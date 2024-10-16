@@ -1,5 +1,5 @@
 # We are using node's image as base for this one
-FROM node:16 as base
+FROM node:20.18 as base
 
 # Create the app directory
 WORKDIR /app
